@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vijaykanth V | Full Stack Developer</title>
+  <meta name="description" content="Vijaykanth V - Full Stack Developer with experience in Java, Swift, Spring Boot, React. Banking domain expertise at TCS Israel." />
+  <meta name="keywords" content="Full Stack Developer, Java Developer, iOS Developer, Spring Boot, React, Swift, TCS, Banking Application" />
+  <meta name="author" content="Vijaykanth V" />
+  <meta property="og:title" content="Vijaykanth V | Full Stack Developer" />
+  <meta property="og:description" content="Full Stack Developer with strong background in Java, Swift, Spring Boot & React. Onsite experience at TCS Israel." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ========== THEME VARIABLES ========== */
+    :root, [data-theme="dark"] {
+      --bg: #0b0f19;
+      --bg-elevated: #111827;
+      --bg-card: #151c2c;
+      --border: #1f2a3d;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --accent: #22d3ee;
+      --accent-hover: #67e8f9;
+      --accent-soft: rgba(34, 211, 238, 0.12);
+      --accent-2: #818cf8;
+      --green: #34d399;
+      --green-soft: rgba(52, 211, 153, 0.12);
+      --radius: 12px;
+      --shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+      --grid-color: rgba(34, 211, 238, 0.035);
+      --header-gradient: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+    }
+
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --bg-elevated: #ffffff;
+      --bg-card: #ffffff;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-dim: #64748b;
+      --accent: #0891b2;
+      --accent-hover: #0e7490;
+      --accent-soft: rgba(8, 145, 178, 0.1);
+      --accent-2: #6366f1;
+      --green: #059669;
+      --green-soft: rgba(5, 150, 105, 0.1);
+      --shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+      --grid-color: rgba(8, 145, 178, 0.04);
+      --header-gradient: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      min-height: 100vh;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    /* Subtle professional grid */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+      background-size: 56px 56px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: var(--accent-hover);
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 1.5rem 3.5rem;
+    }
+
+    /* ========== THEME TOGGLE ========== */
+    .theme-toggle {
+      position: fixed;
+      top: 1.25rem;
+      right: 1.25rem;
+      z-index: 100;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--bg-elevated);
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+      transition: all 0.25s ease;
+    }
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: scale(1.05);
+    }
+    .theme-toggle svg {
+      width: 18px;
+      height: 18px;
+    }
+    .theme-toggle .icon-sun { display: none; }
+    .theme-toggle .icon-moon { display: block; }
+    [data-theme="light"] .theme-toggle .icon-sun { display: block; }
+    [data-theme="light"] .theme-toggle .icon-moon { display: none; }
+
+    /* ========== HEADER ========== */
+    header {
+      padding: 3.25rem 0 2rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2.25rem;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .identity h1 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      background: var(--header-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.3rem;
+    }
+
+    .identity .title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+      color: var(--accent);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    .identity .title::before {
+      content: '›';
+      color: var(--accent-2);
+      opacity: 0.8;
+      font-size: 1.1rem;
+    }
+
+    .contact-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 1.2rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      padding: 0.38rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+    .pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+    .pill svg {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+    }
+
+    nav {
+      display: flex;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+      margin-top: 1.6rem;
+    }
+    nav a {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-dim);
+      padding: 0.32rem 0.7rem;
+      border-radius: 6px;
+      transition: all 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    nav a:hover {
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    /* ========== SECTIONS ========== */
+    section {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1.15rem;
+    }
+    .section-header h2 {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      white-space: nowrap;
+    }
+    .section-header::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border), transparent);
+    }
+
+    /* ========== ABOUT ========== */
+    .about-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.6rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .about-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--accent), var(--accent-2));
+    }
+    .about-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    .about-card strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ========== EXPERIENCE ========== */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.35rem;
+    }
+
+    .job {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.6rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      box-shadow: var(--shadow);
+    }
+    .job:hover {
+      border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.7rem;
+    }
+
+    .job-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .job-company {
+      font-size: 0.88rem;
+      color: var(--accent-2);
+      margin-top: 0.15rem;
+    }
+
+    .job-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      padding: 0.28rem 0.65rem;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .job-role-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--green);
+      background: var(--green-soft);
+      border: 1px solid color-mix(in srgb, var(--green) 30%, transparent);
+      padding: 0.14rem 0.55rem;
+      border-radius: 4px;
+      margin-bottom: 0.65rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .job h4 {
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 0.9rem 0 0.4rem;
+    }
+    .job h4:first-of-type {
+      margin-top: 0.4rem;
+    }
+
+    .job ul {
+      list-style: none;
+    }
+    .job li {
+      position: relative;
+      padding-left: 1.1rem;
+      margin-bottom: 0.4rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    .job li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.8rem;
+    }
+    .job li strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ========== SKILLS ========== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 0.9rem;
+    }
+
+    .skill-group {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.25rem;
+      box-shadow: var(--shadow);
+    }
+    .skill-group h3 {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-dim);
+      margin-bottom: 0.7rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .tag {
+      font-size: 0.8rem;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.28rem 0.65rem;
+      border-radius: 6px;
+      transition: all 0.15s;
+    }
+    .tag:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    /* ========== EDUCATION ========== */
+    .edu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+    .edu-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.15rem 1.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow);
+    }
+    .edu-item h3 {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .edu-item .school {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+    .edu-meta {
+      text-align: right;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+    .edu-score {
+      display: inline-block;
+      margin-top: 0.3rem;
+      color: var(--green);
+      font-weight: 500;
+    }
+
+    /* ========== TWO COLUMN ========== */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.1rem;
+    }
+    @media (max-width: 620px) {
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .list-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.35rem;
+      box-shadow: var(--shadow);
+    }
+    .list-card h3 {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-dim);
+      margin-bottom: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .list-card ul {
+      list-style: none;
+    }
+    .list-card li {
+      position: relative;
+      padding-left: 1rem;
+      margin-bottom: 0.45rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    .list-card li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      text-align: center;
+      padding: 2.25rem 0 0.5rem;
+      border-top: 1px solid var(--border);
+      margin-top: 0.5rem;
+    }
+    footer p {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Print */
+    @media print {
+      .theme-toggle { display: none; }
+      body { background: white; color: #111; }
+      body::before { display: none; }
+      .job, .about-card, .skill-group, .edu-item, .list-card {
+        border: 1px solid #ddd;
+        background: #fff;
+        box-shadow: none;
+      }
+      .identity h1 {
+        -webkit-text-fill-color: #111;
+        color: #111;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme" title="Toggle theme">
+    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+    </svg>
+    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+    </svg>
+  </button>
+
+  <div class="container">
+    <header>
+      <div class="header-top">
+        <div class="identity">
+          <h1>Vijaykanth V</h1>
+          <div class="title">Full Stack Developer</div>
+        </div>
+      </div>
+
+      <div class="contact-pills">
+        <a class="pill" href="tel:+919490924510">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          +91 94909 24510
+        </a>
+        <a class="pill" href="mailto:v.vijaykanth98@gmail.com">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          v.vijaykanth98@gmail.com
+        </a>
+      </div>
+
+      <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#more">More</a>
+      </nav>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-header"><h2>// about</h2></div>
+      <div class="about-card">
+        <p>
+          Aspiring Full Stack Developer with a proven track record in iOS app development and Java application development.
+          Adept in <strong>Swift</strong>, <strong>MVVM Architecture</strong>, and <strong>Java</strong> technologies.
+          Eager to leverage existing skills and expand expertise in a dynamic full-stack role.
+          Committed to delivering innovative solutions and contributing technical proficiency and problem-solving passion
+          to a forward-thinking organization.
+        </p>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-header"><h2>// experience</h2></div>
+      <div class="timeline">
+
+        <article class="job">
+          <div class="job-header">
+            <div>
+              <div class="job-title">Java Developer</div>
+              <div class="job-company">Tata Consultancy Services · Israel (Onsite)</div>
+            </div>
+            <div class="job-meta">Nov 2021 — Present</div>
+          </div>
+          <span class="job-role-tag">Banking Application</span>
+
+          <h4>Document Management System (DMS)</h4>
+          <ul>
+            <li>Transitioned into Java Developer role focusing on the Document Management System for a major Banking Application.</li>
+            <li>Designed and configured documents using Java technologies, aligning them with specific templates and business requirements for enhanced system functionality.</li>
+          </ul>
+
+          <h4>API Performance Optimization</h4>
+          <ul>
+            <li>Optimized API performance across multiple modules including the DMS application, significantly improving overall system efficiency and responsiveness.</li>
+            <li>Leveraged onsite presence for real-time problem-solving and production issue resolution using deep Java expertise.</li>
+            <li>Collaborated closely with the development team to implement new functionalities successfully.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-header">
+            <div>
+              <div class="job-title">iOS Developer</div>
+              <div class="job-company">Tata Consultancy Services · Israel (Onsite)</div>
+            </div>
+            <div class="job-meta">Jan 2020 — Nov 2021</div>
+          </div>
+          <span class="job-role-tag">Banking Application</span>
+
+          <h4>End-to-End Application Leadership</h4>
+          <ul>
+            <li>Led the complete development lifecycle of a comprehensive iOS banking application — from conceptualization through deployment.</li>
+            <li>Implemented critical features including Login management, Customer Onboarding, and multiple user-centric modules using <strong>Swift</strong>, Xcode, and modern iOS development practices.</li>
+          </ul>
+
+          <h4>Agile Collaboration & Quality</h4>
+          <ul>
+            <li>Worked within an agile team, contributing strong Banking domain knowledge to align technical solutions with precise business requirements.</li>
+            <li>Integrated the application securely with backend API services, ensuring seamless and reliable connectivity.</li>
+            <li>Built and maintained a robust, scalable codebase with reusable UI and non-UI components; actively participated in code reviews.</li>
+            <li>Proactively fixed defects to maintain high application quality and reliability, consistently meeting or exceeding delivery timelines.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-header"><h2>// technical skills</h2></div>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Languages</h3>
+          <div class="tags">
+            <span class="tag">Java (Advanced / OOPS)</span>
+            <span class="tag">Swift</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Backend</h3>
+          <div class="tags">
+            <span class="tag">Spring Boot (MVC)</span>
+            <span class="tag">REST APIs</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Frontend</h3>
+          <div class="tags">
+            <span class="tag">React</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">Bootstrap</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Tools & Version Control</h3>
+          <div class="tags">
+            <span class="tag">Git</span>
+            <span class="tag">GitLab</span>
+            <span class="tag">SourceTree</span>
+            <span class="tag">Xcode</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="section-header"><h2>// education</h2></div>
+      <div class="edu-list">
+        <div class="edu-item">
+          <div>
+            <h3>Master of Computer Science and Applications</h3>
+            <div class="school">Sastra University · Chennai – Thanjavur, Tamil Nadu</div>
+          </div>
+          <div class="edu-meta">
+            Feb 2023<br>
+            <span class="edu-score">CGPA 8.9</span>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div>
+            <h3>B.Sc. Mathematics, Physics & Computer Science</h3>
+            <div class="school">Silver Jubilee Govt. Degree College · Kurnool</div>
+          </div>
+          <div class="edu-meta">
+            March 2019<br>
+            <span class="edu-score">90%</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOFT SKILLS + INTERESTS -->
+    <section id="more">
+      <div class="section-header"><h2>// soft skills & interests</h2></div>
+      <div class="two-col">
+        <div class="list-card">
+          <h3>Soft Skills</h3>
+          <ul>
+            <li>Excellent verbal & written communication</li>
+            <li>Strong real-world problem solving</li>
+            <li>High adaptability & quick learner of new tools/frameworks</li>
+            <li>Effective time management</li>
+            <li>Keen eye for quality and error-free code</li>
+          </ul>
+        </div>
+        <div class="list-card">
+          <h3>Professional Interests</h3>
+          <ul>
+            <li>DevOps & Cloud Security</li>
+            <li>Artificial Intelligence & Machine Learning</li>
+            <li>Web & Software Development</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Built with care · Ready for GitHub Pages</p>
+    </footer>
+  </div>
+
+  <script>
+    // Theme toggle with localStorage persistence
+    const html = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+
+    // Load saved preference or system preference
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+      html.setAttribute('data-theme', saved);
+    } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+      html.setAttribute('data-theme', 'light');
+    }
+
+    toggle.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  </script>
+</body>
+</html>
